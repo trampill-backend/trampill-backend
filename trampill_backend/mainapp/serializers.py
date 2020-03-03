@@ -8,14 +8,14 @@ class CourseItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.CourseItem
         fields = [
-            "last_updated",
-            "published",
+            "episode_title",
             "episode_url",
-            "created",
             "episode",
             "episode_note",
-            "episode_title",
             "episode_archive",
+            "published",
+            "created",
+            "last_updated",
         ]
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -23,8 +23,8 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Category
         fields = [
-            "created",
             "name",
+            "created",
             "last_updated",
         ]
 
@@ -33,10 +33,11 @@ class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Course
         fields = [
-            "last_updated",
             "name",
-            "created",
             "course_home",
+            "kategori",
             "desc",
             "published",
+            "last_updated",
+            "created",
         ]
