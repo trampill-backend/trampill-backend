@@ -338,4 +338,6 @@ trampill_backend/media/
 
 .pytest_cache/
 
-
+passenger_wsgi.py
+tmp
+tmp/
