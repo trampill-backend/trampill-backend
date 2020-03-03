@@ -19,3 +19,6 @@ djangorestframework==3.11.0  # https://github.com/encode/django-rest-framework
 
 # user add
 django-rest-swagger
+
+# jwt
+djangorestframework-simplejwt==4.4.0

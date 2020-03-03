@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework_swagger.views import get_swagger_view
+from rest_framework_simplejwt import views as jwt_views
 
 schema_view = get_swagger_view(title="News Contents API")
 
@@ -30,7 +31,10 @@ urlpatterns += [
     # DRF auth token
     path("auth-token/", obtain_auth_token),
     path('api/docs/', schema_view),
-    path('auth/', include('rest_framework.urls'),)
+    path('auth/', include('rest_framework.urls'),),
+    # JWT
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 ]
 
 if settings.DEBUG:
