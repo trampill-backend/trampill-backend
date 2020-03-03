@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    
+<p>
+    <a class="btn btn-light" href="{% url 'mainapp_CourseItem_list' %}">
+    CourseItem Listing
+    </a>
+</p>
+    
+<table class="table">
+    <tr><td>last_updated</td><td>{{ object.last_updated }}</td></tr>
+    <tr><td>published</td><td>{{ object.published }}</td></tr>
+    <tr><td>episode_url</td><td>{{ object.episode_url }}</td></tr>
+    <tr><td>created</td><td>{{ object.created }}</td></tr>
+    <tr><td>episode</td><td>{{ object.episode }}</td></tr>
+    <tr><td>episode_note</td><td>{{ object.episode_note }}</td></tr>
+    <tr><td>episode_title</td><td>{{ object.episode_title }}</td></tr>
+    <tr><td>episode_archive</td><td>{{ object.episode_archive }}</td></tr>
+</table>
+<a class="btn btn-primary" href="{{object.get_update_url}}">Edit</a>
+
+{% endblock %}

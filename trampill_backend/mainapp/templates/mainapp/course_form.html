@@ -1,0 +1,41 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    
+<p>
+    <a class="btn btn-light" href="{% url 'mainapp_Course_list' %}">
+    Course Listing
+    </a>
+</p>
+    
+<form method="post">
+{% csrf_token %}
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="last_updated">last_updated: </label>
+  <input class="form-control col-sm-10" id="last_updated" type="date" name="last_updated" value="{{ object.last_updated }}" disabled>
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="name">name: </label>
+  <input class="form-control col-sm-10" id="name" type="text" name="name" value="{{ object.name }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="created">created: </label>
+  <input class="form-control col-sm-10" id="created" type="date" name="created" value="{{ object.created }}" disabled>
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="course_home">course_home: </label>
+  <input class="form-control col-sm-10" id="course_home" type="text" name="course_home" value="{{ object.course_home }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="desc">desc: </label>
+  <input class="form-control col-sm-10" id="desc" type="text" name="desc" value="{{ object.desc }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="published">published: </label>
+  <input class="form-control col-sm-10" id="published" type="text" name="published" value="{{ object.published }}">
+  </div>
+  <input type="submit" value="Save" class="btn btn-primary">
+</form>
+
+{% endblock %}

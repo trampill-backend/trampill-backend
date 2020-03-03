@@ -1,0 +1,49 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    
+<p>
+    <a class="btn btn-light" href="{% url 'mainapp_CourseItem_list' %}">
+    CourseItem Listing
+    </a>
+</p>
+    
+<form method="post">
+{% csrf_token %}
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="last_updated">last_updated: </label>
+  <input class="form-control col-sm-10" id="last_updated" type="date" name="last_updated" value="{{ object.last_updated }}" disabled>
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="published">published: </label>
+  <input class="form-control col-sm-10" id="published" type="text" name="published" value="{{ object.published }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="episode_url">episode_url: </label>
+  <input class="form-control col-sm-10" id="episode_url" type="text" name="episode_url" value="{{ object.episode_url }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="created">created: </label>
+  <input class="form-control col-sm-10" id="created" type="date" name="created" value="{{ object.created }}" disabled>
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="episode">episode: </label>
+  <input class="form-control col-sm-10" id="episode" type="text" name="episode" value="{{ object.episode }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="episode_note">episode_note: </label>
+  <input class="form-control col-sm-10" id="episode_note" type="text" name="episode_note" value="{{ object.episode_note }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="episode_title">episode_title: </label>
+  <input class="form-control col-sm-10" id="episode_title" type="text" name="episode_title" value="{{ object.episode_title }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="episode_archive">episode_archive: </label>
+  <input class="form-control col-sm-10" id="episode_archive" type="text" name="episode_archive" value="{{ object.episode_archive }}">
+  </div>
+  <input type="submit" value="Save" class="btn btn-primary">
+</form>
+
+{% endblock %}
