@@ -84,10 +84,6 @@
 
       {% block content %}
         <p>Welcome to trampill backend.</p>
-    	<p><a href="api/docs/">api docs</a></p>
-      {% if request.user.is_staff %}
-        <a href="{% url 'admin:index' %}">Admin page</a>
-      {% endif %}
       {% endblock content %}
 
     </div> <!-- /container -->
