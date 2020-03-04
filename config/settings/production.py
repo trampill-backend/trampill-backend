@@ -1,3 +1,5 @@
+import uuid
+
 from .base import *  # noqa
 from .base import env
 
@@ -159,3 +161,5 @@ LOGGING = {
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+# admin url
+ADMIN_URL = str(uuid.uuid4().hex) + "/"
