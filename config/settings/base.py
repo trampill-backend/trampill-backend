@@ -4,6 +4,9 @@ Base settings to build other settings files upon.
 
 import environ
 
+from django.contrib.admin import AdminSite
+from django.utils.translation import ugettext_lazy
+
 ROOT_DIR = (
     environ.Path(__file__) - 3
 )  # (trampill_backend/config/settings/base.py - 3 = trampill_backend/)
@@ -289,3 +292,6 @@ REST_FRAMEWORK = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+AdminSite.site_title = ugettext_lazy('My Admin')
+AdminSite.site_header = ugettext_lazy('Administrasi Trampill Backend')
+AdminSite.index_title = ugettext_lazy('ADMINISTRASI DATABASE Trampill Backend')
