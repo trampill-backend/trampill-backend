@@ -27,11 +27,13 @@ urlpatterns = [
 # API URLS
 urlpatterns += [
     # API base url
+    path('auth/', include('rest_framework.urls'), ),
     path("api/v1/", include("config.api_router")),
+
     # DRF auth token
     path("auth-token/", obtain_auth_token),
     path('api/docs/', schema_view),
-    path('auth/', include('rest_framework.urls'),),
+
     # JWT
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
