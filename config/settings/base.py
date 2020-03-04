@@ -74,6 +74,8 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "rest_framework",
+    # issue type object 'Token' has no attribute 'objects'
+    "rest_framework.authtoken",
 ]
 
 LOCAL_APPS = [
