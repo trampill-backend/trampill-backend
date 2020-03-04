@@ -8,7 +8,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework_simplejwt import views as jwt_views
 
-schema_view = get_swagger_view(title="News Contents API")
+schema_view = get_swagger_view(title="Trampill Backend API")
 
 
 urlpatterns = [

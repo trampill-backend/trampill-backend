@@ -17,8 +17,10 @@ class CourseItem(models.Model):
     episode = models.PositiveSmallIntegerField()
     episode_note = models.TextField()
     episode_title = models.CharField(max_length=80)
-    episode_archive = models.URLField(help_text="please use dropbox or anything similar to attach your files, and hook the url to this field")
-    
+    episode_archive = models.URLField(
+        help_text="please use dropbox or anything similar to attach your files, and hook the url to this field"
+    )
+
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     created = models.DateTimeField(auto_now_add=True, editable=False)
 

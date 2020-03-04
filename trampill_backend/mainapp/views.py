@@ -3,64 +3,70 @@ from . import models
 from . import forms
 
 
-class CourseItemListView(generic.ListView):
+class ModelsCourseItemForm:
     model = models.CourseItem
     form_class = forms.CourseItemForm
 
 
-class CourseItemCreateView(generic.CreateView):
-    model = models.CourseItem
-    form_class = forms.CourseItemForm
+class CourseItemListView(ModelsCourseItemForm, generic.ListView):
+    pass
 
 
-class CourseItemDetailView(generic.DetailView):
-    model = models.CourseItem
-    form_class = forms.CourseItemForm
+class CourseItemCreateView(ModelsCourseItemForm, generic.CreateView):
+    pass
 
 
-class CourseItemUpdateView(generic.UpdateView):
-    model = models.CourseItem
-    form_class = forms.CourseItemForm
+class CourseItemDetailView(ModelsCourseItemForm, generic.DetailView):
+    pass
+
+
+class CourseItemUpdateView(ModelsCourseItemForm, generic.UpdateView):
     pk_url_kwarg = "pk"
 
 
-class CategoryListView(generic.ListView):
+class ModelsCategoryForm:
+    """
+    use for category list, create, detail, update
+    """
     model = models.Category
     form_class = forms.CategoryForm
 
 
-class CategoryCreateView(generic.CreateView):
-    model = models.Category
-    form_class = forms.CategoryForm
+class CategoryListView(ModelsCategoryForm, generic.ListView):
+    pass
 
 
-class CategoryDetailView(generic.DetailView):
-    model = models.Category
-    form_class = forms.CategoryForm
+class CategoryCreateView(ModelsCategoryForm, generic.CreateView):
+    pass
 
 
-class CategoryUpdateView(generic.UpdateView):
-    model = models.Category
-    form_class = forms.CategoryForm
+class CategoryDetailView(ModelsCategoryForm, generic.DetailView):
+    pass
+
+
+class CategoryUpdateView(ModelsCategoryForm, generic.UpdateView):
     pk_url_kwarg = "pk"
 
 
-class CourseListView(generic.ListView):
+class ModelsCourseForm:
+    """
+    use for Course list, create, detail, update
+    """
     model = models.Course
     form_class = forms.CourseForm
 
 
-class CourseCreateView(generic.CreateView):
-    model = models.Course
-    form_class = forms.CourseForm
+class CourseListView(ModelsCourseForm, generic.ListView):
+    pass
 
 
-class CourseDetailView(generic.DetailView):
-    model = models.Course
-    form_class = forms.CourseForm
+class CourseCreateView(ModelsCourseForm, generic.CreateView):
+    pass
 
 
-class CourseUpdateView(generic.UpdateView):
-    model = models.Course
-    form_class = forms.CourseForm
+class CourseDetailView(ModelsCourseForm, generic.DetailView):
+    pass
+
+
+class CourseUpdateView(ModelsCourseForm, generic.UpdateView):
     pk_url_kwarg = "pk"

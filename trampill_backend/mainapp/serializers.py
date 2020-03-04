@@ -21,20 +21,19 @@ class CourseItemSerializer(serializers.ModelSerializer):
             "last_updated",
         ]
 
+
 class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Category
         fields = [
+            "id",
             "name",
-            "created",
-            "last_updated",
         ]
 
 
 class CourseSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    kategori = CategorySerializer(read_only=True, many=True)
 
     class Meta:
         model = models.Course
