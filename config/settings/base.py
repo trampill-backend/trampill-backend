@@ -293,5 +293,5 @@ REST_FRAMEWORK = {
 # Your stuff...
 # ------------------------------------------------------------------------------
 AdminSite.site_title = ugettext_lazy('My Admin')
-AdminSite.site_header = ugettext_lazy('Administrasi Trampill Backend')
-AdminSite.index_title = ugettext_lazy('ADMINISTRASI DATABASE Trampill Backend')
+AdminSite.site_header = ugettext_lazy('Admin Trampill Backend')
+AdminSite.index_title = ugettext_lazy('ADMIN DATABASE Trampill Backend')
