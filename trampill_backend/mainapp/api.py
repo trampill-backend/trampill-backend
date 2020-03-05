@@ -1,3 +1,4 @@
+from django.core.cache import cache
 from rest_framework import viewsets, permissions
 
 from . import serializers, serializers_fast
@@ -51,8 +52,8 @@ class CategoryViewSet(viewsets.ModelViewSet):
     partial_update:
         Update a Category.
     """
-
-    queryset = models.Category.objects.all()
+    qs = cache.get_or_set('category_all', models.Category.objects.all())
+    queryset = qs
     serializer_class = serializers.CategorySerializer
     permission_classes = [permissions.IsAuthenticated]
 
