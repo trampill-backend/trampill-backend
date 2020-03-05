@@ -11,6 +11,20 @@ User = get_user_model()
 
 
 class UserViewSet(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericViewSet):
+    """
+        retrieve:
+            Return my username.
+
+        list:
+            Return a list only my username.
+
+        update:
+            Update my username.
+
+        partial_update:
+            Update my username.
+    """
+
     serializer_class = UserSerializer
     queryset = User.objects.all()
     lookup_field = "username"
@@ -20,5 +34,9 @@ class UserViewSet(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericV
 
     @action(detail=False, methods=["GET"])
     def me(self, request):
+        """
+            Return my username.
+        ---
+        """
         serializer = UserSerializer(request.user, context={"request": request})
         return Response(status=status.HTTP_200_OK, data=serializer.data)

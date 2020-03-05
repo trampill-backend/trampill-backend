@@ -71,13 +71,17 @@ DJANGO_APPS = [
     "django.forms",
 ]
 THIRD_PARTY_APPS = [
-    "rest_framework_swagger",
     "crispy_forms",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+
     "rest_framework",
     # issue type object 'Token' has no attribute 'objects'
+
+    # swagger
+    "drf_yasg",
+
     "rest_framework.authtoken",
 ]
 
@@ -295,3 +299,21 @@ REST_FRAMEWORK = {
 AdminSite.site_title = ugettext_lazy('My Admin')
 AdminSite.site_header = ugettext_lazy('Admin Trampill Backend')
 AdminSite.index_title = ugettext_lazy('ADMIN DATABASE Trampill Backend')
+
+# Swagger setinggs
+SWAGGER_SETTINGS = {
+    # "exclude_namespaces": ['swaggerurl', ],  # List URL namespaces to ignore
+    "api_version": '1.0',  # Specify your API's version
+    "api_path": "/api/v1/",  # Specify the path to your API not a root level
+    # "enabled_methods": [  # Specify which methods to enable in Swagger UI
+    #     'get',
+    #     'post',
+    #     'put',
+    #     'patch',
+    #     'delete'
+    # ],
+    # "api_key": '', # An API key
+    # "is_authenticated": False,  # Set to True to enforce user authentication,
+    # "is_superuser": False,  # Set to True to enforce admin only access
+    # "permission_denied_handler": None, # If user has no permisssion, raise 403 error
+}

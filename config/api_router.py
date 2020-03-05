@@ -14,6 +14,5 @@ router.register("course_item", api.CourseItemViewSet)
 router.register("category", api.CategoryViewSet)
 router.register("course", api.CourseViewSet)
 
-
 app_name = "api"
 urlpatterns = router.urls

@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
   {{ block.super }}
-  <p><a href="/api/docs/">api docs</a></p>
+  <p><a href="{% url 'schema-swagger-ui' %}">api docs</a></p>
+  <p><a href="{% url 'schema-redoc' %}">api redocs</a></p>
   {% if request.user.is_staff %}
     <a href="{% url 'admin:index' %}">Admin page</a>
   {% endif %}

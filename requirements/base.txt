@@ -18,7 +18,8 @@ django-redis==4.11.0  # https://github.com/niwinz/django-redis
 djangorestframework==3.11.0  # https://github.com/encode/django-rest-framework
 
 # user add
-django-rest-swagger
+# django-rest-swagger
+drf-yasg
 
 # jwt
 djangorestframework-simplejwt==4.4.0
