@@ -1,6 +1,6 @@
 from rest_framework import viewsets, permissions
 
-from . import serializers
+from . import serializers, serializers_fast
 from . import models
 
 
@@ -27,6 +27,7 @@ class CourseItemViewSet(viewsets.ModelViewSet):
 
     queryset = models.CourseItem.objects.all()
     serializer_class = serializers.CourseItemSerializer
+    # serializer_class = serializers_fast.course_item_serializer()
     permission_classes = [permissions.IsAuthenticated]
 
 
