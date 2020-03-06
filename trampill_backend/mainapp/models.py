@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
 from django.utils.functional import cached_property
+from django.utils.translation import ugettext_lazy as _
 
 User = get_user_model()
 
@@ -13,17 +14,25 @@ class CourseItem(models.Model):
 
     #  Fields
     published = models.BooleanField(default=True)
-    episode_url = models.URLField()
-
-    episode = models.PositiveSmallIntegerField()
-    episode_note = models.TextField()
-    episode_title = models.CharField(max_length=200)
-    episode_archive = models.URLField(
-        help_text="Please use dropbox or anything similar to attach your files, and hook the url to this field"
+    episode_url = models.URLField(
+        null=True,
+        blank=True,
+        help_text=_("You can use YouTube URL Here..")
     )
 
-    last_updated = models.DateTimeField(auto_now=True, editable=False)
+    episode = models.PositiveSmallIntegerField()
+    episode_note = models.TextField(
+        help_text=_("Note for this episode..")
+    )
+    episode_title = models.CharField(max_length=200)
+    episode_archive = models.URLField(
+        null=True,
+        blank=True,
+        help_text=_("Please use dropbox or anything similar to attach your files, and hook the url to this field")
+    )
+
     created = models.DateTimeField(auto_now_add=True, editable=False)
+    last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
         pass
@@ -45,8 +54,9 @@ class CourseItem(models.Model):
 class Category(models.Model):
 
     #  Fields
-    created = models.DateTimeField(auto_now_add=True, editable=False)
     name = models.CharField(max_length=150, unique=True)
+
+    created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
@@ -69,12 +79,19 @@ class Course(models.Model):
     kategori = models.ManyToManyField("Category")
 
     #  Fields
-    last_updated = models.DateTimeField(auto_now=True, editable=False)
     name = models.CharField(max_length=300, unique=True)
-    created = models.DateTimeField(auto_now_add=True, editable=False)
-    course_home = models.URLField()
-    desc = models.TextField()
+    course_home = models.URLField(
+        null=True,
+        blank=True,
+        help_text=_("External URL about the course paste here")
+    )
+    desc = models.TextField(
+        help_text=_("Make a description of your course is mandatory! :)")
+    )
     published = models.BooleanField(default=True)
+
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
         pass
