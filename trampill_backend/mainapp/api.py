@@ -92,10 +92,10 @@ class CourseViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
     lookup_field = 'name'
 
-    def get_serializer_class(self):
-        if self.action == 'list':
-            return serializers.CourseSerializerRead
-        return self.serializer_class
+    # def get_serializer_class(self):
+    #     if self.action == 'list':
+    #         return serializers.CourseSerializerRead
+    #     return self.serializer_class
 
     def update(self, request, *args, **kwargs):
         pass

@@ -69,7 +69,7 @@ class CategorySerializerNoCourseSet(CategorySerializer):
 
 
 class CourseSerializer(serializers.ModelSerializer):
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
     url = serializers.HyperlinkedIdentityField(
         view_name='api:course-detail',
         lookup_field='name',
@@ -82,7 +82,7 @@ class CourseSerializer(serializers.ModelSerializer):
         fields = [
             "url",
             "name",
-            "user",
+            "owner",
             "course_home",
             "kategori",
             "desc",
@@ -93,5 +93,5 @@ class CourseSerializer(serializers.ModelSerializer):
         lookup_field = 'name'
 
 
-class CourseSerializerRead(CourseSerializer):
-    pass
+# class CourseSerializerRead(CourseSerializer):
+#     pass
