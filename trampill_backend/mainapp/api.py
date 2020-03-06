@@ -30,7 +30,7 @@ class CourseItemViewSet(viewsets.ModelViewSet):
         Update a Course Item.
     """
 
-    queryset = models.CourseItem.objects.all()
+    queryset = models.CourseItem.objects.all().select_related('course', 'course__owner')
     serializer_class = serializers.CourseItemSerializer
     # serializer_class = serializers_fast.course_item_serializer()
     permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
@@ -60,8 +60,7 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     partial_update:
         Update a Category.
     """
-    qs = cache.get_or_set('category_all', models.Category.objects.all())
-    queryset = qs
+    queryset = models.Category.objects.all().prefetch_related('course_set')
     serializer_class = serializers.CategorySerializer
     permission_classes = [permissions.IsAuthenticated]
     lookup_field = 'name'
@@ -88,7 +87,7 @@ class CourseViewSet(viewsets.ModelViewSet):
         Update a Course.
     """
 
-    queryset = models.Course.objects.all()
+    queryset = models.Course.objects.all().prefetch_related('kategori')
     serializer_class = serializers.CourseSerializer
     permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
     lookup_field = 'name'
