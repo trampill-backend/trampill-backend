@@ -40,7 +40,7 @@ class CourseItemViewSet(viewsets.ModelViewSet):
         return models.CourseItem.objects.filter(course__owner=self.request.user)
 
 
-class CategoryViewSet(viewsets.ModelViewSet):
+class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     """
     retrieve:
         Return the given Category.
