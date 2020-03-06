@@ -33,7 +33,7 @@ public_apis = [
     path('api/v1/auth/', include('rest_framework.urls'), ),
 
     # apps apis
-    path("api/v1/", include("config.api_router", namespace='apis_docs')),
+    path("api/v1/", include("config.api_router")),
 
     # DRF auth token
     path("api/v1/auth-token/", obtain_auth_token),

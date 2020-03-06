@@ -86,16 +86,16 @@ def create_mainapp_Course(**kwargs):
     defaults["desc"] = ""
     defaults["published"] = True
     if "user" not in kwargs:
-        defaults["user"] = create_User()
+        defaults["owner"] = create_User()
 
     defaults.update(**kwargs)
     instance = mainapp_models.Course.objects.create(**defaults)
 
     if "kategori" not in kwargs:
-        defaults["kategori"] = (create_mainapp_Category(), create_mainapp_Category()) 
+        defaults["kategori"] = (create_mainapp_Category(), create_mainapp_Category())
     defaults.update(**kwargs)
 
-    #return mainapp_models.Course.objects.create(**defaults)
+    # return mainapp_models.Course.objects.create(**defaults)
     instance.kategori.set(defaults["kategori"])
     instance.save()
     return instance

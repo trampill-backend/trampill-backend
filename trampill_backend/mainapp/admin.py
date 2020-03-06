@@ -14,24 +14,19 @@ class CourseItemAdminForm(forms.ModelForm):
 class CourseItemAdmin(admin.ModelAdmin):
     form = CourseItemAdminForm
     list_display = [
-        "last_updated",
-        "published",
-        "episode_url",
-        "created",
+        "course",
         "episode",
-        "episode_note",
         "episode_title",
+        "episode_note",
         "episode_archive",
+        "episode_url",
+        "published",
+        "created",
+        "last_updated",
     ]
     readonly_fields = [
-        "last_updated",
-        "published",
-        "episode_url",
         "created",
-        "episode",
-        "episode_note",
-        "episode_title",
-        "episode_archive",
+        "last_updated",
     ]
 
 
@@ -45,13 +40,12 @@ class CategoryAdminForm(forms.ModelForm):
 class CategoryAdmin(admin.ModelAdmin):
     form = CategoryAdminForm
     list_display = [
-        "created",
         "name",
+        "created",
         "last_updated",
     ]
     readonly_fields = [
         "created",
-        "name",
         "last_updated",
     ]
 
@@ -66,20 +60,16 @@ class CourseAdminForm(forms.ModelForm):
 class CourseAdmin(admin.ModelAdmin):
     form = CourseAdminForm
     list_display = [
-        "last_updated",
         "name",
-        "created",
         "course_home",
         "desc",
         "published",
+        "created",
+        "last_updated",
     ]
     readonly_fields = [
         "last_updated",
-        "name",
         "created",
-        "course_home",
-        "desc",
-        "published",
     ]
 
 

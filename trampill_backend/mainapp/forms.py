@@ -32,6 +32,6 @@ class CourseForm(forms.ModelForm):
             "course_home",
             "desc",
             "published",
-            "user",
+            "owner",
             "kategori",
         ]
