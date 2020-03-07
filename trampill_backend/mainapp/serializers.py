@@ -45,7 +45,8 @@ class CategorySerializer(serializers.ModelSerializer):
             "name",
             "course_set",
         ]
-        read_only_fields = ('url', 'name', 'course_set')
+
+        read_only_fields = ('url', 'name', 'course_set',)
 
         extra_kwargs = {
             "url": {"view_name": "api:category-detail", "lookup_field": "name"}
