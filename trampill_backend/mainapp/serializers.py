@@ -35,8 +35,22 @@ class CourseItemSerializer(serializers.ModelSerializer):
         }
 
 
+class CourseSerializerRead(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Course
+        fields = [
+            "name",
+            "url",
+        ]
+        extra_kwargs = {
+            "url": {"view_name": "api:course-detail", "lookup_field": "name"}
+        }
+        lookup_field = 'name'
+
+
 class CategorySerializer(serializers.ModelSerializer):
-    course_set = serializers.StringRelatedField(many=True)
+    course_set = CourseSerializerRead(read_only=True, many=True)
 
     class Meta:
         model = models.Category
@@ -77,6 +91,7 @@ class CourseSerializer(serializers.ModelSerializer):
     )
 
     kategori = serializers.SlugRelatedField(queryset=models.Category.objects.all(), slug_field='name', many=True)
+    # kategori = CategorySerializerNoCourseSet(many=True, )
 
     class Meta:
         model = models.Course
@@ -94,5 +109,27 @@ class CourseSerializer(serializers.ModelSerializer):
         lookup_field = 'name'
 
 
-# class CourseSerializerRead(CourseSerializer):
-#     pass
+class CourseSerializerReadCategory(serializers.ModelSerializer):
+    owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    url = serializers.HyperlinkedIdentityField(
+        view_name='api:course-detail',
+        lookup_field='name',
+    )
+
+    # kategori = serializers.SlugRelatedField(queryset=models.Category.objects.all(), slug_field='name', many=True)
+    kategori = CategorySerializerNoCourseSet(many=True, read_only=True)
+
+    class Meta:
+        model = models.Course
+        fields = [
+            "url",
+            "name",
+            "owner",
+            "course_home",
+            "kategori",
+            "desc",
+            "published",
+            "last_updated",
+            "created",
+        ]
+        lookup_field = 'name'
